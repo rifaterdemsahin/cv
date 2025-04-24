@@ -1,4 +1,4 @@
-# Additional Informatio
+# Additional Information
 ## Security Clearances
 ### Current Clearances
 - IBM Watchdog (2024)
@@ -51,6 +51,3 @@
 
 ## Availability
 Schedule a meeting: [Calendly Link](https://calendly.com/rifaterdem/schedule)
-
-## References
-Available upon request 
