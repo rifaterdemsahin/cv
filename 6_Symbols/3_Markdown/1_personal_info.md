@@ -1,13 +1,12 @@
-# [Your Name]
-[Your Professional Title]
+# Erdem Sahin
+British Citizen—Security Cleared
 
 ## Contact Information
-- Location: [Your Location]
-- Email: [Your Email]
-- Phone: [Your Phone]
-- LinkedIn: [Your LinkedIn Profile URL]
-- Portfolio: [Your Portfolio/Website URL]
-- GitHub: [Your GitHub Profile URL]
+- Location: London, United Kingdom
+- Email: info@pexabo.com
+- Phone: +44 7848 024173
+- LinkedIn: [linkedin.com/in/rifaterdemsahin](https://linkedin.com/in/rifaterdemsahin)
+- GitHub: [github.com/rifaterdemsahin](https://github.com/rifaterdemsahin)
 
 ## Professional Summary
-A brief, compelling overview of your professional background, key skills, and career objectives. Highlight your unique value proposition and what you bring to potential employers. 
+An experienced and hands-on engineer with extensive knowledge of CI/CD, DevOps, and AI-based architectures. Proven track record in delivering release-on-demand frameworks and transforming enterprise environments. Adept in both cloud and on-premise solutions, with a strong focus on automation, scalability, and security. 

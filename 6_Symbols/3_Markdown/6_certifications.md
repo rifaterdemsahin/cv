@@ -1,23 +1,29 @@
-# Certifications
+# Certifications & Professional Achievements
 
 ## Technical Certifications
-### [Certification Name 1]
-- Issuing Organization: [Organization Name]
-- Date Obtained: [Date]
-- Credential ID: [ID Number]
-- [Certification Link]
+### Microsoft Certified Architect in Cloud Solutions
+- Certification ID: 70-532
+- Focus Areas: Cloud Architecture, Azure Solutions
+- Date Obtained: [Year]
 
-### [Certification Name 2]
-- Issuing Organization: [Organization Name]
-- Date Obtained: [Date]
-- Credential ID: [ID Number]
-- [Certification Link]
+## Professional Achievements
+### Industry Recognition
+- Most Valuable Professional in OO Databases (Db40)
+- Delivered Pilot Program: Achieved 10x Release Cycles
+- Certified Trainer for Pluralsight and Knowledge Academy
+
+### Training & Education
+- Created and delivered DevAIOps courses
+- Developed comprehensive training materials
+- Specialized in Cloud and DevOps technologies
 
 ## Professional Development
-### [Course/Certification Name]
-- Provider: [Provider Name]
-- Completion Date: [Date]
-- Key Skills Learned:
-  - [Skill 1]
-  - [Skill 2]
-- [Course Link] 
+### Technical Expertise
+- Cloud Platforms: Azure, AWS, GCP
+- Containerization: Kubernetes, Docker
+- Infrastructure: Terraform, Ansible
+- CI/CD: Jenkins, Azure DevOps, Git
+- Monitoring: ELK Stack
+- Programming: Python, Java, JavaScript, SQL, PowerShell
+- Architecture: Serverless, Microservices, Virtualization
+- Emerging Tech: VR, AI & Machine Learning Platforms 

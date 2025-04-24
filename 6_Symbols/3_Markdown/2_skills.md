@@ -1,29 +1,56 @@
 # Skills
 
+## Core Competencies
+- DevOps & CI/CD
+- Transformation Specialist
+- Site Reliability Engineering (SRE)
+- Security Cleared Operations
+- AI Consultant
+- Agile Transformation
+- Cloud Computing
+- Automation
+- Microservices Architecture
+- Infrastructure as Code
+- Data Engineering
+
 ## Technical Skills
+### Cloud Platforms
+- Microsoft Azure
+- Amazon Web Services (AWS)
+- Google Cloud Platform (GCP)
+
+### Containerization & Orchestration
+- Kubernetes
+- Docker
+- Serverless Architectures
+
+### Infrastructure & Configuration
+- Terraform
+- Ansible
+- Infrastructure as Code (IaC)
+
+### CI/CD & DevOps Tools
+- Jenkins
+- Azure DevOps
+- Git
+- ELK Stack
+- Various CI/CD Tools
+
 ### Programming Languages
-- [Language 1]
-- [Language 2]
-- [Language 3]
+- Python
+- Java
+- JavaScript
+- PowerShell
+- SQL
 
-### Frameworks & Libraries
-- [Framework 1]
-- [Framework 2]
-- [Framework 3]
+### Data & Formats
+- JSON
+- Data Engineering
 
-### Tools & Technologies
-- [Tool 1]
-- [Tool 2]
-- [Tool 3]
-
-### Databases
-- [Database 1]
-- [Database 2]
-
-### Cloud & DevOps
-- [Cloud Service 1]
-- [Cloud Service 2]
-- [DevOps Tool 1]
+### Emerging Technologies
+- AI & Machine Learning Platforms
+- Virtual Reality (VR)
+- Microservices Frameworks
 
 ## Soft Skills
 - Communication

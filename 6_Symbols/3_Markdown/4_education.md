@@ -1,23 +1,31 @@
 # Education
 
-## [Degree Name]
-[University Name] | [Location] | [Graduation Year]
+## Bachelor of Science
+Southern New Hampshire University | USA | 2013
 
 ### Academic Achievements
-- GPA: [Your GPA]
-- Honors: [Any honors received]
+- Focus on Computer Science and Technology
 - Relevant Coursework:
-  - [Course 1]
-  - [Course 2]
-  - [Course 3]
+  - Software Development
+  - Database Systems
+  - Cloud Computing
+  - System Architecture
 
-### Extracurricular Activities
-- [Activity 1]
-- [Activity 2]
+## High School Diploma
+Severna Park High School | USA | 1999
 
-## [Additional Degree/Certification]
-[Institution Name] | [Location] | [Completion Year]
+### Academic Focus
+- Mathematics
+- Computer Science
+- Science and Technology
 
-### Key Learnings
-- [Learning Point 1]
-- [Learning Point 2] 
+## Professional Training
+### DevAIOps Course Creation
+- Created comprehensive training materials
+- Developed practical exercises and case studies
+- Focused on AI-driven DevOps practices
+
+### Certified Trainer
+- Pluralsight Certified Instructor
+- Knowledge Academy Certified Trainer
+- Specialized in Cloud and DevOps technologies 
