@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to PDF Converter - Rifat Erdem Sahin</title>
+    <meta name="description" content="Convert Markdown documents to beautiful PDF files instantly. Professional tool for document conversion with live preview.">
+    <meta name="keywords" content="markdown, pdf, converter, document, html, css, javascript">
+    <meta name="author" content="Rifat Erdem Sahin">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Markdown to PDF Converter">
+    <meta property="og:description" content="Convert Markdown documents to beautiful PDF files instantly">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rifaterdemsahin.github.io/cv/6_Symbols/markdown-to-pdf-converter/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .editor-section {
+            padding: 30px;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .preview-section {
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .editor-container {
+            position: relative;
+        }
+
+        #markdown-editor {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        #markdown-editor:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .preview-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+        }
+
+        .preview-container h1,
+        .preview-container h2,
+        .preview-container h3,
+        .preview-container h4,
+        .preview-container h5,
+        .preview-container h6 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .preview-container h1 {
+            font-size: 2rem;
+            border-bottom: 2px solid #4facfe;
+            padding-bottom: 10px;
+        }
+
+        .preview-container h2 {
+            font-size: 1.5rem;
+            color: #4facfe;
+        }
+
+        .preview-container h3 {
+            font-size: 1.3rem;
+            color: #666;
+        }
+
+        .preview-container p {
+            margin-bottom: 15px;
+        }
+
+        .preview-container ul,
+        .preview-container ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .preview-container li {
+            margin-bottom: 5px;
+        }
+
+        .preview-container blockquote {
+            border-left: 4px solid #4facfe;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        .preview-container code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .preview-container pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .preview-container pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .preview-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .preview-container th,
+        .preview-container td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .preview-container th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #17a2b8;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .file-label:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+
+        .sample-markdown {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .sample-markdown h4 {
+            color: #4facfe;
+            margin-bottom: 10px;
+        }
+
+        .sample-markdown button {
+            background: #4facfe;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .sample-markdown button:hover {
+            background: #3d8bfe;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4facfe;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer a {
+            color: #4facfe;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .editor-section {
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Markdown to PDF Converter</h1>
+            <p>Convert your Markdown documents to beautiful PDFs instantly</p>
+        </div>
+
+        <div class="main-content">
+            <div class="editor-section">
+                <h2 class="section-title">✏️ Markdown Editor</h2>
+                <div class="editor-container">
+                    <textarea id="markdown-editor" placeholder="Enter your Markdown content here...
+
+# Your CV Title
+
+## Contact Information
+- Name: Your Name
+- Email: your.email@example.com
+- Phone: +44 1234 567890
+- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+
+## Professional Summary
+Brief description of your professional background and key skills.
+
+## Skills
+- Technical Skill 1
+- Technical Skill 2
+- Technical Skill 3
+
+## Work Experience
+
+### Company Name
+Position Title | Date Range
+
+#### Key Achievements
+- Achievement 1
+- Achievement 2
+- Achievement 3
+
+---
+
+**Ready to convert your CV to PDF?** 🎉"></textarea>
+                </div>
+
+                <div class="controls">
+                    <input type="file" id="file-input" class="file-input" accept=".md,.txt,.markdown">
+                    <label for="file-input" class="file-label">
+                        📁 Load File
+                    </label>
+                    <button class="btn btn-secondary" onclick="clearEditor()">
+                        🗑️ Clear
+                    </button>
+                    <button class="btn btn-primary" onclick="loadSample()">
+                        📋 Load Sample CV
+                    </button>
+                </div>
+
+                <div class="sample-markdown">
+                    <h4>💡 Quick Start</h4>
+                    <p>Try the sample AI Engineer CV to see how it works, or load your own Markdown file!</p>
+                    <button onclick="loadSample()">Load Sample CV</button>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <h2 class="section-title">👁️ Live Preview</h2>
+                <div id="preview-container" class="preview-container">
+                    <p style="color: #999; text-align: center; margin-top: 50px;">
+                        Start typing in the editor to see your Markdown rendered here...
+                    </p>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-success" onclick="convertToPDF()">
+                        📄 Convert to PDF
+                    </button>
+                    <button class="btn btn-primary" onclick="downloadMarkdown()">
+                        💾 Download Markdown
+                    </button>
+                </div>
+
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Generating PDF...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🚀 Powered by <a href="https://marked.js.org/" target="_blank">Marked.js</a>, <a href="https://github.com/parallax/jsPDF" target="_blank">jsPDF</a>, and <a href="https://html2canvas.hertzen.com/" target="_blank">HTML2Canvas</a></p>
+            <p>Created by <a href="https://github.com/rifaterdemsahin" target="_blank">Rifat Erdem Sahin</a> | <a href="https://rifaterdemsahin.github.io/cv/" target="_blank">View CV</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        // Initialize marked with options
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            headerIds: false,
+            mangle: false
+        });
+
+        // Get DOM elements
+        const editor = document.getElementById('markdown-editor');
+        const preview = document.getElementById('preview-container');
+        const fileInput = document.getElementById('file-input');
+        const loading = document.getElementById('loading');
+
+        // Sample markdown content - AI Engineer CV
+        const sampleMarkdown = `# Rifat Erdem Sahin - CV (2025-04-24)
+
+---
+
+# Erdem Sahin
+British Citizen—Security Cleared
+
+## Contact Information
+- Location: London, United Kingdom
+- Email: info@pexabo.com
+- Phone: +44 7848 024173
+- LinkedIn: [linkedin.com/in/rifaterdemsahin](https://linkedin.com/in/rifaterdemsahin)
+- GitHub: [github.com/rifaterdemsahin](https://github.com/rifaterdemsahin)
+
+## Professional Summary
+AI Engineer with 12+ years of technology experience, specializing in LLM integration, MLOps, and intelligent automation. Expert in deploying machine learning models, building AI-powered applications, and implementing MLOps pipelines. Proven track record in leveraging Large Language Models (GPT-4, Claude, Llama), developing AI-driven automation solutions, and integrating AI capabilities into enterprise systems. Strong background in Python, TensorFlow, PyTorch, cloud AI services (Azure OpenAI, AWS Bedrock), and production ML infrastructure.
+
+---
+
+# Skills
+
+## Core Competencies
+- AI/ML Engineering (5+ years)
+- Large Language Models (LLMs) - GPT-4, Claude, Llama
+- MLOps & Model Deployment
+- Python & ML Frameworks (TensorFlow, PyTorch)
+- Natural Language Processing (NLP)
+- Prompt Engineering & Fine-tuning
+- Cloud AI Services (Azure OpenAI, AWS Bedrock)
+- AI-Driven Automation
+
+## Technical Skills
+### AI/ML Technologies
+- Large Language Models: GPT-4, Claude, Llama 2, Mistral
+- ML Frameworks: TensorFlow, PyTorch, Scikit-learn, Keras
+- NLP Libraries: Hugging Face, LangChain, LlamaIndex, SpaCy
+- Vector Databases: Pinecone, Weaviate, ChromaDB, FAISS
+- RAG (Retrieval Augmented Generation)
+- Prompt Engineering & Model Fine-tuning
+- Computer Vision: OpenCV, YOLO
+
+### MLOps & Infrastructure
+- Model Deployment & Monitoring
+- MLflow, Kubeflow, Weights & Biases
+- Docker & Kubernetes for ML workloads
+- CI/CD for ML pipelines
+- Azure ML, AWS SageMaker, Google Vertex AI
+- Model versioning (DVC, MLflow)
+- A/B Testing & Model Performance Monitoring
+
+---
+
+# Work Experience
+
+## IBM
+Critical National Infrastructure Program | 2024 - Present
+
+### Role Description
+AI Engineer - Intelligent Automation & LLM Integration
+
+### Key Achievements
+- Developed AI-powered SRE process automation using LLMs (GPT-4, Claude) for intelligent decision-making
+- Implemented RAG (Retrieval Augmented Generation) system with vector embeddings for knowledge base queries
+- Built ML-powered monitoring and anomaly detection system reducing incident response time by 40%
+- Integrated Azure OpenAI APIs for natural language processing of system logs and alerts
+- Deployed containerized ML models using Kubernetes for scalable inference
+- Created automated prompt engineering pipeline for LLM optimization
+
+### Technologies Used
+- Python, TensorFlow, PyTorch
+- Azure OpenAI (GPT-4), Claude API
+- LangChain, LlamaIndex
+- Vector Databases (Pinecone, ChromaDB)
+- Kubernetes, Docker
+- Azure ML, MLflow
+- SQL Server / PostgreSQL
+- Azure DevOps
+
+## Goldman Sachs
+Muscat, Oman | 2023
+
+### Role Description
+ML Engineer - Financial Predictive Analytics
+
+### Key Achievements
+- Built predictive ML models for financial risk assessment using ensemble methods (XGBoost, Random Forest)
+- Developed real-time anomaly detection system using LSTM neural networks for transaction monitoring
+- Implemented automated feature engineering pipeline reducing model development time by 60%
+- Created ML-powered data classification system achieving 95% accuracy
+- Deployed models to production using MLflow and AWS SageMaker
+- Optimized model inference time by 50% through model quantization and optimization
+
+---
+
+# Education
+
+## Bachelor of Science
+Southern New Hampshire University | USA | 2013
+
+### Academic Achievements
+- Focus on Computer Science and Technology
+- Relevant Coursework:
+  - Software Development
+  - Database Systems
+  - Cloud Computing
+  - System Architecture
+
+---
+
+# Certifications & Professional Achievements
+
+## Technical Certifications
+### AI/ML Certifications
+- Microsoft Certified: Azure AI Engineer Associate
+- AWS Certified Machine Learning - Specialty (In Progress)
+- TensorFlow Developer Certificate (Planned)
+- Deep Learning Specialization - Coursera
+
+### Cloud & Architecture Certifications
+- Microsoft Certified Architect in Cloud Solutions
+- Certification ID: 70-532
+- Focus Areas: Cloud Architecture, Azure AI Solutions
+
+---
+
+# Additional Information
+## Security Clearances
+### Current Clearances
+- IBM Watchdog (2024)
+- Sterling Background Check (2020)
+
+### Upcoming Clearances
+- DBS (2025)
+- BPSS (2026)
+- CNI (2026)
+- UK SC (2028)
+- NSV (2028)
+- NATO (2029)
+
+## Availability
+Schedule a meeting: [Calendly Link](https://calendly.com/rifaterdem/schedule)`;
+
+        // Update preview when editor content changes
+        editor.addEventListener('input', updatePreview);
+
+        // File input handler
+        fileInput.addEventListener('change', handleFileUpload);
+
+        // Initialize with sample content
+        function loadSample() {
+            editor.value = sampleMarkdown;
+            updatePreview();
+        }
+
+        // Clear editor
+        function clearEditor() {
+            editor.value = '';
+            updatePreview();
+        }
+
+        // Update preview
+        function updatePreview() {
+            const markdown = editor.value;
+            if (markdown.trim() === '') {
+                preview.innerHTML = '<p style="color: #999; text-align: center; margin-top: 50px;">Start typing in the editor to see your Markdown rendered here...</p>';
+                return;
+            }
+            
+            try {
+                const html = marked.parse(markdown);
+                preview.innerHTML = html;
+            } catch (error) {
+                preview.innerHTML = '<p style="color: red;">Error parsing Markdown: ' + error.message + '</p>';
+            }
+        }
+
+        // Handle file upload
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                editor.value = e.target.result;
+                updatePreview();
+            };
+            reader.readAsText(file);
+        }
+
+        // Convert to PDF
+        async function convertToPDF() {
+            const markdown = editor.value;
+            if (markdown.trim() === '') {
+                alert('Please enter some Markdown content first!');
+                return;
+            }
+
+            loading.classList.add('show');
+            
+            try {
+                // Parse markdown to HTML
+                const html = marked.parse(markdown);
+                
+                // Create a temporary container for the HTML
+                const tempContainer = document.createElement('div');
+                tempContainer.innerHTML = html;
+                tempContainer.style.cssText = `
+                    position: absolute;
+                    left: -9999px;
+                    top: -9999px;
+                    width: 800px;
+                    padding: 40px;
+                    background: white;
+                    font-family: 'Georgia', serif;
+                    line-height: 1.6;
+                    color: #333;
+                `;
+                
+                // Add styles for better PDF output
+                const style = document.createElement('style');
+                style.textContent = `
+                    h1 { font-size: 2.5rem; color: #333; margin-bottom: 20px; border-bottom: 3px solid #4facfe; padding-bottom: 10px; }
+                    h2 { font-size: 2rem; color: #4facfe; margin-top: 30px; margin-bottom: 15px; }
+                    h3 { font-size: 1.5rem; color: #666; margin-top: 25px; margin-bottom: 10px; }
+                    h4 { font-size: 1.3rem; color: #666; margin-top: 20px; margin-bottom: 10px; }
+                    p { margin-bottom: 15px; }
+                    ul, ol { margin-bottom: 15px; padding-left: 20px; }
+                    li { margin-bottom: 5px; }
+                    blockquote { border-left: 4px solid #4facfe; padding-left: 20px; margin: 20px 0; color: #666; font-style: italic; }
+                    code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; }
+                    pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; }
+                    pre code { background: none; padding: 0; }
+                    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+                    th { background: #f8f9fa; font-weight: 600; }
+                    hr { border: none; border-top: 2px solid #e0e0e0; margin: 30px 0; }
+                `;
+                
+                document.head.appendChild(style);
+                document.body.appendChild(tempContainer);
+                
+                // Convert to canvas
+                const canvas = await html2canvas(tempContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                });
+                
+                // Create PDF
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgData = canvas.toDataURL('image/png');
+                
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 295; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // Download PDF
+                const fileName = prompt('Enter filename for PDF:', 'markdown-document.pdf') || 'markdown-document.pdf';
+                pdf.save(fileName);
+                
+                // Cleanup
+                document.body.removeChild(tempContainer);
+                document.head.removeChild(style);
+                
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF: ' + error.message);
+            } finally {
+                loading.classList.remove('show');
+            }
+        }
+
+        // Download markdown
+        function downloadMarkdown() {
+            const markdown = editor.value;
+            if (markdown.trim() === '') {
+                alert('Please enter some Markdown content first!');
+                return;
+            }
+            
+            const blob = new Blob([markdown], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'document.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize with sample content
+        loadSample();
+    </script>
+</body>
+</html>
+

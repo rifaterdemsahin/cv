@@ -1,0 +1,36 @@
+{
+  "contactInfo": {
+    "yourProfile": {
+      "linkedin": "linkedin.com/in/rifaterdemsahin"
+    },
+    "websites": [
+      {
+        "url": "devops.engineering/",
+        "type": "Company"
+      },
+      {
+        "url": "calendly.com/rifaterdem/schedule",
+        "type": "Company"
+      },
+      {
+        "url": "github.com/rifaterdemsahin",
+        "type": "Other"
+      }
+    ],
+    "phone": [
+      {
+        "number": "+447848024173",
+        "type": "Work"
+      }
+    ],
+    "address": "Cambridge, UK.",
+    "email": "info@pexabo.com",
+    "im": [
+      {
+        "username": "rifaterdemsahin",
+        "platform": "Skype"
+      }
+    ],
+    "birthday": "April 17"
+  }
+}

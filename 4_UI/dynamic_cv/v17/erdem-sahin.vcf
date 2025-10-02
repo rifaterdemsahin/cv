@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Sahin;Erdem;;;
+FN:Erdem Sahin
+TITLE:AI Engineer
+NOTE:AI Engineer specializing in LLM integration, MLOps, and intelligent automation systems.
+TEL;TYPE=CELL,VOICE:+447848024173
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/rifaterdemsahin
+URL;TYPE=WORK,CALENDAR:https://calendly.com/rifaterdem/schedule
+URL;TYPE=GitHub:https://github.com/rifaterdemsahin/
+END:VCARD
