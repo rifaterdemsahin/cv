@@ -1,60 +1,28 @@
 # Erdem Sahin
-AI Solutions Architect ⚛⚛ | Agent & LLM Specialist | CI/CD Automation Engineer | DevOps Contracts ☁⚛ | Security-Cleared Professional (UK SC, NATO, NSV)
+**AI Solutions Architect | Agent & LLM Specialist | CI/CD Automation Engineer | DevOps Contracts | Security-Cleared Professional (UK SC, NATO, NSV)**
 
-## Contact Information
-- Location: Cambridge, UK
-- Email: contact@rifaterdemsahin.com
-- Phone: +447848024173 (Work)
-- LinkedIn: [linkedin.com/in/rifaterdemsahin](https://linkedin.com/in/rifaterdemsahin)
-- GitHub: [github.com/rifaterdemsahin](https://github.com/rifaterdemsahin)
-- Calendly: [calendly.com/rifaterdem/schedule](https://calendly.com/rifaterdem/schedule)
+---
 
-## Professional Summary
-Hi there! I'm Erdem Sahin, a passionate DevOps Engineer and Transformation Specialist with over +10 years of experience in driving Continuous Delivery (CD) and DevSecOps practices. My journey in tech has been fueled by a commitment to enhancing IT processes, leveraging AI for smarter solutions, and creating efficient cloud infrastructures. ☁⚛
+### Contact Information
 
-**Expertise:**
-- Infrastructure as Code (IaC) with tools like Terraform and Azure
-- Kubernetes and Docker for container orchestration
-- CI/CD Pipelines to streamline software delivery and improve product quality
-- ChatGPT Prompt Engineering for innovative training programs
+*   **Location:** Cambridge, UK
+*   **Email:** contact@rifaterdemsahin.com
+*   **Phone:** +447848024173 (Work)
+*   **LinkedIn:** [linkedin.com/in/rifaterdemsahin](https://linkedin.com/in/rifaterdemsahin)
+*   **GitHub:** [github.com/rifaterdemsahin](https://github.com/rifaterdemsahin)
+*   **Scheduling:** [calendly.com/rifaterdem/schedule](https://calendly.com/rifaterdem/schedule)
 
-Currently, I'm seeking global contracting opportunities to help organizations embrace digital transformation and elevate their DevOps strategies.
+---
 
-Let's connect and explore how we can collaborate to achieve remarkable outcomes! 
+### Professional Summary
 
-{
-  "contactInfo": {
-    "yourProfile": {
-      "linkedin": "linkedin.com/in/rifaterdemsahin"
-    },
-    "websites": [
-      {
-        "url": "devops.engineering/",
-        "type": "Company"
-      },
-      {
-        "url": "calendly.com/rifaterdem/schedule",
-        "type": "Company"
-      },
-      {
-        "url": "github.com/rifaterdemsahin",
-        "type": "Other"
-      }
-    ],
-    "phone": [
-      {
-        "number": "+447848024173",
-        "type": "Work"
-      }
-    ],
-    "address": "Cambridge, UK.",
-    "email": "info@pexabo.com",
-    "im": [
-      {
-        "username": "rifaterdemsahin",
-        "platform": "Skype"
-      }
-    ],
-    "birthday": "April 17"
-  }
-}
+A results-driven DevOps Engineer and Transformation Specialist with over a decade of experience in architecting and implementing Continuous Delivery (CD) and DevSecOps solutions. My passion lies in optimizing IT processes, harnessing the power of AI to build intelligent systems, and designing robust, scalable cloud infrastructures. I am currently seeking challenging global contract opportunities where I can leverage my expertise to drive digital transformation and elevate DevOps strategies.
+
+---
+
+### Core Expertise
+
+*   **Infrastructure as Code (IaC):** Proficient in using Terraform and Azure to automate infrastructure provisioning and management.
+*   **Containerization & Orchestration:** Extensive experience with Docker and Kubernetes for deploying and managing containerized applications.
+*   **CI/CD Pipelines:** Skilled in designing and implementing CI/CD pipelines to accelerate software delivery and enhance product quality.
+*   **AI & Prompt Engineering:** Expertise in leveraging ChatGPT and other AI tools to create innovative solutions and training programs.
