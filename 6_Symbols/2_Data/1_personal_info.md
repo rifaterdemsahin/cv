@@ -3,7 +3,7 @@ AI Solutions Architect ⚛⚛ | Agent & LLM Specialist | CI/CD Automation Engine
 
 ## Contact Information
 - Location: Cambridge, UK
-- Email: rifaterdemsahin@hotmail.com
+- Email: contact@rifaterdemsahin.com
 - Phone: +447848024173 (Work)
 - LinkedIn: [linkedin.com/in/rifaterdemsahin](https://linkedin.com/in/rifaterdemsahin)
 - GitHub: [github.com/rifaterdemsahin](https://github.com/rifaterdemsahin)
@@ -21,3 +21,40 @@ Hi there! I'm Erdem Sahin, a passionate DevOps Engineer and Transformation Speci
 Currently, I'm seeking global contracting opportunities to help organizations embrace digital transformation and elevate their DevOps strategies.
 
 Let's connect and explore how we can collaborate to achieve remarkable outcomes! 
+
+{
+  "contactInfo": {
+    "yourProfile": {
+      "linkedin": "linkedin.com/in/rifaterdemsahin"
+    },
+    "websites": [
+      {
+        "url": "devops.engineering/",
+        "type": "Company"
+      },
+      {
+        "url": "calendly.com/rifaterdem/schedule",
+        "type": "Company"
+      },
+      {
+        "url": "github.com/rifaterdemsahin",
+        "type": "Other"
+      }
+    ],
+    "phone": [
+      {
+        "number": "+447848024173",
+        "type": "Work"
+      }
+    ],
+    "address": "Cambridge, UK.",
+    "email": "info@pexabo.com",
+    "im": [
+      {
+        "username": "rifaterdemsahin",
+        "platform": "Skype"
+      }
+    ],
+    "birthday": "April 17"
+  }
+}

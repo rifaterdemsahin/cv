@@ -92,3 +92,180 @@
 - Adaptability
 - Training & Mentoring
 - Cross-functional Teamwork 
+
+
+{
+  "skills": {
+    "cloudPlatforms": [
+      "AWS",
+      "Microsoft Azure",
+      "Multi-Cloud"
+    ],
+    "containerization": [
+      "Docker",
+      "Kubernetes",
+      "Docker Compose",
+      "Rancher",
+      "ECS/EKS",
+      "Container Registry",
+      "LXD"
+    ],
+    "infrastructureAsCode": [
+      "Terraform",
+      "Infrastructure as Code (IaC)",
+      "AWS CloudFormation",
+      "Azure Arm Templates",
+      "Ansible",
+      "Vagrant"
+    ],
+    "cicd": [
+      "CI/CD Pipelines",
+      "Azure DevOps",
+      "Jenkins",
+      "Team City",
+      "Atlassian Bamboo",
+      "Octopus",
+      "Pipeline as Code",
+      "VSTS Continuous Integration and Deployment"
+    ],
+    "serverless": [
+      "AWS Lambda",
+      "Azure Functions",
+      "Serverless"
+    ],
+    "orchestration": [
+      "AWS Step Functions",
+      "Azure Logic Apps",
+      "Activity State Machine",
+      "Service Fabric"
+    ],
+    "apiManagement": [
+      "Azure API Management",
+      "API Gateway",
+      "Ocelot",
+      "Backend For Frontend (BFF)",
+      "OpenAPI",
+      "Swagger"
+    ],
+    "security": [
+      "Azure Key Vault",
+      "OKTA",
+      "Veracode",
+      "SonarQube",
+      "SSL",
+      "SSH",
+      "WAF",
+      "JWT",
+      "PenTest",
+      "Penetration Testing Tools",
+      "IAM",
+      "Ciphers",
+      "Encryption"
+    ],
+    "monitoring": [
+      "Azure Log Analytics",
+      "ELK (Elastic Search Log Stash, Kibana)",
+      "AppInsights",
+      "Site24x7"
+    ],
+    "networking": [
+      "DNS",
+      "Load Balancers",
+      "Reverse Proxy",
+      "Nginx",
+      "Traefik",
+      "Ingress Orchestration",
+      "Network Architecture",
+      "VPN",
+      "NetScaler",
+      "Routing",
+      "IPSec Tunnelling",
+      "Security Ports",
+      "Firewalls",
+      "Egress/Ingress"
+    ],
+    "dataStores": [
+      "Redis",
+      "Minio",
+      "EventStore",
+      "S3",
+      "RDS (PostgreSQL)",
+      "RedShift",
+      "Azure SQL Database",
+      "Azure Storage",
+      "NCache"
+    ],
+    "messagingAndStreaming": [
+      "Azure Service Bus",
+      "Kafka",
+      "Zookeeper"
+    ],
+    "devTools": [
+      "Git",
+      "GitHub",
+      "GitFlow",
+      "VSCode",
+      "Visual Studio",
+      "Atom",
+      "Postman",
+      "Jira",
+      "Confluence",
+      "Slack Integration",
+      "ChatOps"
+    ],
+    "programmingLanguages": [
+      ".Net Core",
+      "C#",
+      "Python",
+      "Ruby",
+      "PowerShell",
+      "Bash Scripting",
+      "Node.js",
+      "ReactJS"
+    ],
+    "operatingSystems": [
+      "Linux",
+      "Ubuntu",
+      "CentOS",
+      "Windows"
+    ],
+    "virtualization": [
+      "VMware",
+      "VirtualBox",
+      "Remote Desktop Services",
+      "AWS Workspaces"
+    ],
+    "configuration": [
+      "Yaml",
+      "Helm",
+      "Configuration Management",
+      "Puppet",
+      "Chef"
+    ],
+    "methodologies": [
+      "Ubiquitous Language",
+      "Domain Driven Design",
+      "CQRS Microservices",
+      "Agile Techniques (SCRUM)"
+    ],
+    "aiAndPromptEngineering": [
+      "ChatGPT Prompt Engineering"
+    ],
+    "otherTechnologies": [
+      "Codespaces",
+      "M-Files",
+      "Feature Toggles",
+      "Release Flow",
+      "Salesforce Integration",
+      "Kentico",
+      "Selenium Remote",
+      "Unity 3D",
+      "Vuforia",
+      "Adobe Creative Cloud",
+      "WeVideo",
+      "Video Production",
+      "Windows Desktop Forms",
+      "Raspberry Pi"
+    ]
+  }
+}
