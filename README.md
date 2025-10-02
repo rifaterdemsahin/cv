@@ -1,26 +1,25 @@
-
 # 👨‍💻 Rifat Erdem Sahin - DevOps Engineer
 
 
 ### 📊 Data Files
-- [📋 contactinfo.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Cv/contactinfo.json)
-- [💼 experinces.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Cv/experinces.json)
-- [🛠️ skill.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Cv/skill.json)
-- [📈 skillmatrix.csv](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Cv/skillmatrix.csv)
+- [📋 contactinfo.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Data/contactinfo.json)
+- [💼 experinces.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Data/experinces.json)
+- [🛠️ skill.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Data/skill.json)
+- [📈 skillmatrix.csv](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Data/skillmatrix.csv)
 
 ### 🌐 HTML Files
-- [📄 cv.html](https://rifaterdemsahin.github.io/cv/6_Symbols/2_Cv/cv.html)
-- [🎯 skills_categories.html](https://rifaterdemsahin.github.io/cv/6_Symbols/2_Cv/skills_categories.html)
+- [📄 cv.html](https://rifaterdemsahin.github.io/cv/6_Symbols/2_Data/cv.html)
+- [🎯 skills_categories.html](https://rifaterdemsahin.github.io/cv/6_Symbols/2_Data/skills_categories.html)
 
 ### 📝 Markdown Files
-- [👤 Personal Info](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/1_personal_info.md)
-- [🛠️ Skills](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/2_skills.md)
-- [💼 Work Experience](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/3_work_experience.md)
-- [🎓 Education](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/4_education.md)
-- [🚀 Projects](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/5_projects.md)
-- [📜 Certifications](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/6_certifications.md)
-- [ℹ️ Additional Info](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/7_additional_info.md)
-- [📋 CV Guidelines](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_Markdown/cv_guidelines.md)
+- [👤 Personal Info](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/1_personal_info.md)
+- [🛠️ Skills](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/2_skills.md)
+- [💼 Work Experience](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/3_work_experience.md)
+- [🎓 Education](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/4_education.md)
+- [🚀 Projects](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/5_projects.md)
+- [📜 Certifications](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/6_certifications.md)
+- [ℹ️ Additional Info](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/7_additional_info.md)
+- [📋 CV Guidelines](https://github.com/rifaterdemsahin/cv/blob/main/6_Symbols/3_BusinessLayer/cv_guidelines.md)
 
 ### 📇 Contact Card
 - [📱 erdem-sahin.vcf](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/4_UI/versions/v16/erdem-sahin.vcf) - Digital contact card (vCard)
@@ -48,13 +47,17 @@
 - [💼 References - Work (PDF)](https://github.com/rifaterdemsahin/cv/raw/main/4_UI/versions/v15/references-work-rifat-erdem-sahin-1.pdf)
 
 ### 🛠️ Tools & Utilities
-- [📝 Markdown to PDF Converter](https://rifaterdemsahin.github.io/cv/6_Symbols/markdown-to-pdf-converter/) - Professional tool for converting Markdown documents to PDF files with live preview
+
 
 ### 🌍 Published
-- [🔗 Live CV Website](https://rifaterdemsahin.github.io/cv/cv.html)
+- [🔗 Live CV Website](https://rifaterdemsahin.github.io/cv/index.html)
 
 ### 🔄 Update the Repo
 
 ```bash
 git pull; git add . && git commit -m "Update CV files" && git push
 ```
+
+### 🌐 Environment
+- **Root URL:** https://rifaterdemsahin.github.io/cv
+- **GitHub Repository:** https://github.com/rifaterdemsahin/cv
