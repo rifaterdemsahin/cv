@@ -4,7 +4,6 @@ import MarkdownViewer from './components/MarkdownViewer';
 import DebugWindow from './components/DebugWindow';
 import ReactMarkdown from 'react-markdown';
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 
 function App() {
@@ -107,15 +106,17 @@ function App() {
 
     const downloadPdf = () => {
         if (cvContainerRef.current) {
-            log('Generating PDF...');
-            html2canvas(cvContainerRef.current).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('cv.pdf');
-                log('PDF download initiated.');
+            log('Generating PDF with page breaks...');
+            const pdf = new jsPDF('p', 'pt', 'a4');
+            pdf.html(cvContainerRef.current, {
+                callback: function (pdf) {
+                    pdf.save('cv.pdf');
+                    log('PDF download initiated.');
+                },
+                x: 10,
+                y: 10,
+                width: 190, // A4 width in mm is 210, leaving some margin
+                windowWidth: 675 // Est. width of the container in pixels
             });
         }
     };
