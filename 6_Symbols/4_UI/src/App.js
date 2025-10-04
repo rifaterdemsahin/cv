@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import TopMenu from './components/TopMenu';
 import MarkdownViewer from './components/MarkdownViewer';
 import DebugWindow from './components/DebugWindow';
-import ReactMarkdown from 'react-markdown';
 import jsPDF from 'jspdf';
 import { saveAs } from 'file-saver';
 
