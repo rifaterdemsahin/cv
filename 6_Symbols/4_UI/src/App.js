@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TopMenu from './components/TopMenu';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
@@ -94,6 +95,7 @@ Learning Delivery Manager at Instinct Resourcing`;
 
     return (
         <div>
+            <TopMenu />
             <div className="header">
                 <h1>Dynamic CV Generator</h1>
             </div>
