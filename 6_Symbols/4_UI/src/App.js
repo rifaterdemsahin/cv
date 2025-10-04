@@ -47,7 +47,7 @@ function App() {
                 markdownFiles.map(file =>
                     fetch(`${process.env.PUBLIC_URL}/data/${file}`).then(res => {
                         if (!res.ok) {
-                            throw new Error(`Could not fetch ${file}`);
+                            throw new Error(`Could not fetch ${res.url}`);
                         }
                         return res.text();
                     })
@@ -64,7 +64,8 @@ function App() {
             log('All data logged. Ready to be pushed.');
 
             log('Sending data to backend service...');
-            const response = await fetch('https://n8n.rifaterdemsahin.com/webhook/cv', {
+            const webhookUrl = 'https://n8n.rifaterdemsahin.com/webhook/cv';
+            const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ function App() {
 
             if (!response.ok) {
                 const errorBody = await response.text();
-                throw new Error(`Error ${response.status}: ${response.statusText}. ${errorBody}`);
+                throw new Error(`Error ${response.status} from ${webhookUrl}: ${response.statusText}. ${errorBody}`);
             }
 
             log('Received response from backend.');
