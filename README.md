@@ -1,4 +1,4 @@
-# 👨‍💻 Rifat Erdem Sahin - DevOps Engineer
+# 👨‍💻 Rifat Erdem Sahin - AI Engineer
 
 
 ### 📊 Data Files

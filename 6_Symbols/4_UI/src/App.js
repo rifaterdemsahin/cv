@@ -36,7 +36,7 @@ function App() {
         try {
             const markdownContents = await Promise.all(
                 markdownFiles.map(file =>
-                    fetch(`/data/${file}`).then(res => {
+                    fetch(`${process.env.PUBLIC_URL}/data/${file}`).then(res => {
                         if (!res.ok) {
                             throw new Error(`Could not fetch ${file}`);
                         }
