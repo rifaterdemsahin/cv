@@ -5,7 +5,6 @@ import DebugWindow from './components/DebugWindow';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
-import htmlToDocx from 'html-to-docx';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
@@ -117,17 +116,6 @@ function App() {
         }
     };
 
-    const downloadDocx = async () => {
-        log('Generating DOCX...');
-        const fileBuffer = await htmlToDocx(cvHtml, null, {
-            table: { row: { cantSplit: true } },
-            footer: true,
-            pageNumber: true,
-        });
-        saveAs(fileBuffer, 'cv.docx');
-        log('DOCX download initiated.');
-    };
-
     const downloadMarkdown = () => {
         log('Generating Markdown file...');
         const blob = new Blob([cvMarkdown], { type: 'text/markdown;charset=utf-8' });
@@ -186,7 +174,6 @@ Learning Delivery Manager at Instinct Resourcing`;
                         <div dangerouslySetInnerHTML={{ __html: cvHtml }} />
                         <div className="download-buttons">
                             <button onClick={downloadPdf}>Download as PDF</button>
-                            <button onClick={downloadDocx}>Download as DOCX</button>
                             <button onClick={downloadMarkdown}>Download as Markdown</button>
                         </div>
                     </div>

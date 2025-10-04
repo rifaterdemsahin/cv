@@ -74,3 +74,14 @@ button:hover {
 .download-buttons button:hover {
     background-color: #218838;
 }
+
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 5px 10px;
+    background-color: #f0f2f5;
+    font-size: 12px;
+    color: #888;
+    z-index: 3001; /* Above the debug window */
+}
