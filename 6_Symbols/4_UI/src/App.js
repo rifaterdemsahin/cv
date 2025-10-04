@@ -64,7 +64,7 @@ function App() {
             log('All data logged. Ready to be pushed.');
 
             log('Sending data to backend service...');
-            const webhookUrl = 'https://n8n.rifaterdemsahin.com/webhook/cv';
+            const webhookUrl = 'https://n8n.rifaterdemsahin.com/webhook/24ba00ca-e972-4cd5-8911-54acb2f7803a';
             const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
