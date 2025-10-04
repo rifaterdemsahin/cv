@@ -53,12 +53,15 @@ function App() {
                     })
                 )
             );
-            log('Data loaded successfully. Ready to be pushed.');
-
+            log('Data loaded successfully. Logging content preview:');
             const markdownData = markdownFiles.reduce((acc, file, index) => {
-                acc[file] = markdownContents[index];
+                const content = markdownContents[index];
+                log(`- ${file}: "${content.substring(0, 50).replace(/\n/g, ' ')}..."`);
+                acc[file] = content;
                 return acc;
             }, {});
+
+            log('All data logged. Ready to be pushed.');
 
             log('Sending data to backend service...');
             const response = await fetch('https://n8n.rifaterdemsahin.com/webhook/cv', {
