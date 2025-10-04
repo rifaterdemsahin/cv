@@ -1,0 +1,7 @@
+# macOS
+.DS_Store
+
+# Node.js UI project
+/6_Symbols/4_UI/node_modules/
+/6_Symbols/4_UI/package-lock.json
+6_Symbols/4_UI/node_modules/.bin/acorn
