@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TopMenu from './components/TopMenu';
 import MarkdownViewer from './components/MarkdownViewer';
+import DebugWindow from './components/DebugWindow';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
@@ -8,6 +9,11 @@ function App() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [markdownFile, setMarkdownFile] = useState(null);
+    const [debugLog, setDebugLog] = useState([]);
+
+    const log = (message) => {
+        setDebugLog(prevLog => [...prevLog, `[${new Date().toLocaleTimeString()}] ${message}`]);
+    };
 
     const handleOpenFile = (fileUrl) => {
         setMarkdownFile(fileUrl);
@@ -29,11 +35,14 @@ function App() {
     ];
 
     const generateCv = async () => {
+        setDebugLog([]); // Clear log on new run
+        log('Starting CV generation...');
         setLoading(true);
         setError('');
         setGeneratedCv('');
 
         try {
+            log('Fetching markdown data files...');
             const markdownContents = await Promise.all(
                 markdownFiles.map(file =>
                     fetch(`${process.env.PUBLIC_URL}/data/${file}`).then(res => {
@@ -44,12 +53,14 @@ function App() {
                     })
                 )
             );
+            log('Data loaded successfully. Ready to be pushed.');
 
             const markdownData = markdownFiles.reduce((acc, file, index) => {
                 acc[file] = markdownContents[index];
                 return acc;
             }, {});
 
+            log('Sending data to backend service...');
             const response = await fetch('https://n8n.rifaterdemsahin.com/webhook/cv', {
                 method: 'POST',
                 headers: {
@@ -66,11 +77,14 @@ function App() {
                 throw new Error(`Error ${response.status}: ${response.statusText}. ${errorBody}`);
             }
 
+            log('Received response from backend.');
             const cvHtml = await response.text();
             setGeneratedCv(cvHtml);
+            log('CV generation complete.');
 
         } catch (err) {
             setError(err.message);
+            log(`Error: ${err.message}`);
         } finally {
             setLoading(false);
         }
@@ -105,7 +119,7 @@ Learning Delivery Manager at Instinct Resourcing`;
     };
 
     return (
-        <div>
+        <div className="app-container">
             <TopMenu onOpenFile={handleOpenFile} />
             <div className="header">
                 <h1>Dynamic CV Generator</h1>
@@ -129,6 +143,7 @@ Learning Delivery Manager at Instinct Resourcing`;
                 )}
             </div>
             <MarkdownViewer fileUrl={markdownFile} onClose={handleCloseFile} />
+            <DebugWindow logs={debugLog} />
         </div>
     );
 }

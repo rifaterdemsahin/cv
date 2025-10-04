@@ -5,6 +5,10 @@ body {
     color: #333;
 }
 
+.app-container {
+    padding-bottom: 200px; /* Add padding for the debug window */
+}
+
 .header {
     background-color: #007bff;
     color: white;
