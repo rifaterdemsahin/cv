@@ -3,9 +3,9 @@ import './TopMenu.css';
 
 const menuData = {
     "🚀 Core Files": {
-        "📄 README.md": "./README.md",
-        "🤖 gemini.md": "./gemini.md",
-        "🧭 cursor.md": "./cursor.md"
+        "📄 README.md": "./markdown/README.md",
+        "🤖 gemini.md": "./markdown/gemini.md",
+        "🧭 cursor.md": "./markdown/cursor.md"
     },
     "📂 CV Versions": {
         "v19 - HPC Engineer": "./4_UI/dynamic_cv/v19/",
@@ -23,15 +23,15 @@ const menuData = {
         "🧪 CV Generation Formulas": "./5_Formula/"
     },
     "📦 Node & React": {
-        "🚀 GitHub Pages Deployment": "./5_Formula/github_pages_deployment.md",
-        "🤔 How GitHub Pages Runs React": "./5_Formula/github_pages_react_deployment_explained.md",
-        "⚛️ React Explanation": "./3_Environment/react_explanation.md",
-        "📦 NPM on Mac": "./3_Environment/npm_on_mac_install.md",
-        "▶️ NPM Run": "./5_Formula/NPM_RUN.MD",
-        "❌ Node Build Fail": "./7_Semblance/first_github_actions_node_fails.md",
-        "❌ Initial Start Error": "./7_Semblance/initial_start_error.md",
-        "❌ Load Error": "./7_Semblance/load_error.md",
-        "❌ React Error Fix": "./7_Semblance/react_error_fix.md"
+        "🚀 GitHub Pages Deployment": "./markdown/github_pages_deployment.md",
+        "🤔 How GitHub Pages Runs React": "./markdown/github_pages_react_deployment_explained.md",
+        "⚛️ React Explanation": "./markdown/react_explanation.md",
+        "📦 NPM on Mac": "./markdown/npm_on_mac_install.md",
+        "▶️ NPM Run": "./markdown/NPM_RUN.MD",
+        "❌ Node Build Fail": "./markdown/first_github_actions_node_fails.md",
+        "❌ Initial Start Error": "./markdown/initial_start_error.md",
+        "❌ Load Error": "./markdown/load_error.md",
+        "❌ React Error Fix": "./markdown/react_error_fix.md"
     },
     "🗂️ Other Directories": {
         "🎯 1_Real": "./1_Real/",
