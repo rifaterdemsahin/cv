@@ -2,13 +2,13 @@ import React, { useState, useRef } from 'react';
 import TopMenu from './components/TopMenu';
 import MarkdownViewer from './components/MarkdownViewer';
 import DebugWindow from './components/DebugWindow';
+import ReactMarkdown from 'react-markdown';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
-    const [cvHtml, setCvHtml] = useState('');
     const [cvMarkdown, setCvMarkdown] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -44,7 +44,6 @@ function App() {
         log('Starting CV generation...');
         setLoading(true);
         setError('');
-        setCvHtml('');
         setCvMarkdown('');
 
         try {
@@ -90,8 +89,10 @@ function App() {
             log('Received response from backend.');
             const result = await response.json();
             log(`Parsed backend response: ${JSON.stringify(result)}`);
-            setCvHtml(result.html);
-            setCvMarkdown(result.markdown);
+            // The output from n8n is a markdown string inside a JSON object.
+            // We need to extract the markdown from the 'output' field.
+            const markdownOutput = result.output.replace(/```markdown\n|```/g, '');
+            setCvMarkdown(markdownOutput);
             log('CV generation complete.');
 
         } catch (err) {
@@ -169,10 +170,10 @@ Learning Delivery Manager at Instinct Resourcing`;
                 </button>
                 <button onClick={fillWithSampleJob}>Fill with Sample Job</button>
                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-                {cvHtml && (
+                {cvMarkdown && (
                     <div className="cv-container" ref={cvContainerRef}>
                         <h2>Generated CV</h2>
-                        <div dangerouslySetInnerHTML={{ __html: cvHtml }} />
+                        <ReactMarkdown>{cvMarkdown}</ReactMarkdown>
                         <div className="download-buttons">
                             <button onClick={downloadPdf}>Download as PDF</button>
                             <button onClick={downloadMarkdown}>Download as Markdown</button>

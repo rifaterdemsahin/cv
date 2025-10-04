@@ -14,31 +14,22 @@ Even though the debug log shows that the CV generation process completes success
 
 The log indicates that the `fetch` request to the n8n webhook was successful and that the entire `try` block in the `generateCv` function completed without throwing an error. The code then proceeds to the `finally` block.
 
-## Diagnosis
+## Final Diagnosis and Resolution
 
-The visibility of the CV content and the download buttons is controlled by the `cvHtml` state variable. The buttons only render if `cvHtml` has a truthy value.
+The debug logs confirmed that the n8n workflow was returning a JSON object with a different structure than the application expected. 
 
-```javascript
-{cvHtml && (
-    <div className="cv-container">...</div>
-)}
-```
+*   **Expected Structure:** `{"html": "...", "markdown": "..."}`
+*   **Actual Structure:** `{"message": "...", "output": "..."}`
 
-The issue is almost certainly in how the response from the n8n webhook is being handled:
+Because the application was looking for an `html` property that didn't exist, the component would never render the generated content or the download buttons.
 
-```javascript
-const result = await response.json();
-setCvHtml(result.html);
-setCvMarkdown(result.markdown);
-```
+### The Fix:
 
-If the buttons are not appearing, it means `cvHtml` is not being set to a valid string. This can happen if:
+The `App.js` component was refactored to handle the actual data structure being returned:
 
-1.  The response from the webhook is not valid JSON, causing `response.json()` to fail silently or in a way not caught as expected.
-2.  The response is valid JSON, but it does not contain an `html` property. In this case, `result.html` would be `undefined`, and `cvHtml` would be set to `undefined` (a falsy value).
+1.  **Parse Correct Field:** The code was updated to read the markdown string from the `output` field of the JSON response.
+2.  **Remove `cvHtml` State:** The state variable for holding HTML (`cvHtml`) was removed, and the `cvMarkdown` state is now the single source of truth for the generated content.
+3.  **Render with `ReactMarkdown`:** The component now uses the `<ReactMarkdown>` component directly to render the `cvMarkdown` state. This is more secure than using `dangerouslySetInnerHTML` and correctly displays the formatted CV.
+4.  **Buttons Visibility:** Since the download buttons' visibility is dependent on the content state (`cvMarkdown`), this change also fixes the issue of the buttons not appearing.
 
-Given that the user previously confirmed they could update the n8n workflow, the most likely scenario is that the workflow is not yet returning the data in the expected `{"html": "...", "markdown": "..."}` format.
-
-## Debugging Step
-
-To confirm this, the next step is to add more detailed logging to `App.js` to inspect the exact response body being returned by the n8n webhook.
+This solution makes the application more robust by correctly handling the data it receives from the backend and using a safer method for rendering the content.
