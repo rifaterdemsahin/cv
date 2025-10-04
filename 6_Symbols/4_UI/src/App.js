@@ -197,7 +197,6 @@ Learning Delivery Manager at Instinct Resourcing`;
                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
                 {cvHtml && (
                     <div className="cv-container" ref={cvContainerRef}>
-                        <h2>Generated CV</h2>
                         <div dangerouslySetInnerHTML={{ __html: cvHtml }} />
                         <div className="download-buttons">
                             <button onClick={downloadPdf}>Download as PDF</button>
