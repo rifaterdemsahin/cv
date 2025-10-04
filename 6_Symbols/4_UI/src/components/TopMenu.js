@@ -87,6 +87,9 @@ const TopMenu = ({ onOpenFile }) => {
                 ))}
             </div>
             <div className="menu-items-right">
+                <a href="https://github.com/rifaterdemsahin/cv/actions" target="_blank" rel="noopener noreferrer" className="repo-link">
+                    🚀 Actions
+                </a>
                 <a href="https://github.com/rifaterdemsahin/cv" target="_blank" rel="noopener noreferrer" className="repo-link">
                     ⭐ GitHub Repo
                 </a>
