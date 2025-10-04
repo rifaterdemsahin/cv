@@ -41,7 +41,7 @@ const menuData = {
     }
 };
 
-const TopMenu = () => {
+const TopMenu = ({ onOpenFile }) => {
     const [activeMenu, setActiveMenu] = useState(null);
 
     const handleMenuEnter = (menu) => {
@@ -63,11 +63,22 @@ const TopMenu = () => {
                     <span>{title}</span>
                     {activeMenu === title && (
                         <div className="dropdown">
-                            {Object.keys(menuData[title]).map(linkText => (
-                                <a key={linkText} href={menuData[title][linkText]} target="_blank" rel="noopener noreferrer">
-                                    {linkText}
-                                </a>
-                            ))}
+                            {Object.keys(menuData[title]).map(linkText => {
+                                const fileUrl = menuData[title][linkText];
+                                if (fileUrl.endsWith('.md')) {
+                                    return (
+                                        <button key={linkText} onClick={() => onOpenFile(fileUrl)}>
+                                            {linkText}
+                                        </button>
+                                    );
+                                } else {
+                                    return (
+                                        <a key={linkText} href={fileUrl} target="_blank" rel="noopener noreferrer">
+                                            {linkText}
+                                        </a>
+                                    );
+                                }
+                            })}
                         </div>
                     )}
                 </div>
