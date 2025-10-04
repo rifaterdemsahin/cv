@@ -62,7 +62,8 @@ function App() {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to generate CV. Please check the n8n workflow.');
+                const errorBody = await response.text();
+                throw new Error(`Error ${response.status}: ${response.statusText}. ${errorBody}`);
             }
 
             const cvHtml = await response.text();
