@@ -54,35 +54,42 @@ const TopMenu = ({ onOpenFile }) => {
 
     return (
         <nav className="top-menu" onMouseLeave={handleMenuLeave}>
-            {Object.keys(menuData).map(title => (
-                <div 
-                    key={title} 
-                    className="menu-item" 
-                    onMouseEnter={() => handleMenuEnter(title)}
-                >
-                    <span>{title}</span>
-                    {activeMenu === title && (
-                        <div className="dropdown">
-                            {Object.keys(menuData[title]).map(linkText => {
-                                const fileUrl = menuData[title][linkText];
-                                if (fileUrl.endsWith('.md')) {
-                                    return (
-                                        <button key={linkText} onClick={() => onOpenFile(fileUrl)}>
-                                            {linkText}
-                                        </button>
-                                    );
-                                } else {
-                                    return (
-                                        <a key={linkText} href={fileUrl} target="_blank" rel="noopener noreferrer">
-                                            {linkText}
-                                        </a>
-                                    );
-                                }
-                            })}
-                        </div>
-                    )}
-                </div>
-            ))}
+            <div className="menu-items-left">
+                {Object.keys(menuData).map(title => (
+                    <div 
+                        key={title} 
+                        className="menu-item" 
+                        onMouseEnter={() => handleMenuEnter(title)}
+                    >
+                        <span>{title}</span>
+                        {activeMenu === title && (
+                            <div className="dropdown">
+                                {Object.keys(menuData[title]).map(linkText => {
+                                    const fileUrl = menuData[title][linkText];
+                                    if (fileUrl.endsWith('.md')) {
+                                        return (
+                                            <button key={linkText} onClick={() => onOpenFile(fileUrl)}>
+                                                {linkText}
+                                            </button>
+                                        );
+                                    } else {
+                                        return (
+                                            <a key={linkText} href={fileUrl} target="_blank" rel="noopener noreferrer">
+                                                {linkText}
+                                            </a>
+                                        );
+                                    }
+                                })}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+            <div className="menu-items-right">
+                <a href="https://github.com/rifaterdemsahin/cv" target="_blank" rel="noopener noreferrer" className="repo-link">
+                    ⭐ GitHub Repo
+                </a>
+            </div>
         </nav>
     );
 };
