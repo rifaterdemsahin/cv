@@ -48,6 +48,9 @@
 
 ### 🛠️ Tools & Utilities
 
+### 🚀 Deployment
+- [📦 GitHub Actions](https://github.com/rifaterdemsahin/cv/actions)
+
 
 ### 🌍 Published
 - [🔗 Live CV Website](https://rifaterdemsahin.github.io/cv/index.html)
