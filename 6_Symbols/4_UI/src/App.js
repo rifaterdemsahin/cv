@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import TopMenu from './components/TopMenu';
+import MarkdownViewer from './components/MarkdownViewer';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
     const [generatedCv, setGeneratedCv] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [markdownFile, setMarkdownFile] = useState(null);
+
+    const handleOpenFile = (fileUrl) => {
+        setMarkdownFile(fileUrl);
+    };
+
+    const handleCloseFile = () => {
+        setMarkdownFile(null);
+    };
 
     const markdownFiles = [
         '1_personal_info.md',
@@ -95,7 +105,7 @@ Learning Delivery Manager at Instinct Resourcing`;
 
     return (
         <div>
-            <TopMenu />
+            <TopMenu onOpenFile={handleOpenFile} />
             <div className="header">
                 <h1>Dynamic CV Generator</h1>
             </div>
@@ -117,6 +127,7 @@ Learning Delivery Manager at Instinct Resourcing`;
                     </div>
                 )}
             </div>
+            <MarkdownViewer fileUrl={markdownFile} onClose={handleCloseFile} />
         </div>
     );
 }
