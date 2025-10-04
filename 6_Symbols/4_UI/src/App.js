@@ -194,6 +194,9 @@ Learning Delivery Manager at Instinct Resourcing`;
             </div>
             <MarkdownViewer fileUrl={markdownFile} onClose={handleCloseFile} />
             <DebugWindow logs={debugLog} />
+            <div className="app-footer">
+                Version {process.env.REACT_APP_VERSION}
+            </div>
         </div>
     );
 }
