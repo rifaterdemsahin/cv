@@ -10,6 +10,7 @@ import { saveAs } from 'file-saver';
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
     const [cvMarkdown, setCvMarkdown] = useState('');
+    const [cvDocx, setCvDocx] = useState(''); // Add state for docx
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [markdownFile, setMarkdownFile] = useState(null);
@@ -45,6 +46,7 @@ function App() {
         setLoading(true);
         setError('');
         setCvMarkdown('');
+        setCvDocx(''); // Clear docx state
 
         try {
             log('Fetching markdown data files...');
@@ -88,11 +90,13 @@ function App() {
 
             log('Received response from backend.');
             const result = await response.json();
-            log(`Parsed backend response: ${JSON.stringify(result)}`);
-            // The output from n8n is a markdown string inside a JSON object.
-            // We need to extract the markdown from the 'output' field.
-            const markdownOutput = result.output.replace(/```markdown\n|```/g, '');
-            setCvMarkdown(markdownOutput);
+            log(`Parsed backend response: ${JSON.stringify(result).substring(0, 200)}...`);
+            
+            // The n8n workflow should return html, markdown, and docx_base64
+            const markdownOutput = result.output || result.markdown || '';
+            setCvMarkdown(markdownOutput.replace(/```markdown\n|```/g, ''));
+            setCvDocx(result.docx_base64 || '');
+
             log('CV generation complete.');
 
         } catch (err) {
@@ -118,11 +122,37 @@ function App() {
         }
     };
 
+    const downloadDocx = () => {
+        log('Generating DOCX file...');
+        try {
+            const byteCharacters = atob(cvDocx);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+            saveAs(blob, 'cv.docx');
+            log('DOCX download initiated.');
+        } catch (e) {
+            const errorMessage = 'Failed to decode or save DOCX file. Ensure backend is sending valid base64.';
+            log(errorMessage);
+            setError(errorMessage);
+        }
+    };
+
     const downloadMarkdown = () => {
         log('Generating Markdown file...');
         const blob = new Blob([cvMarkdown], { type: 'text/markdown;charset=utf-8' });
         saveAs(blob, 'cv.md');
         log('Markdown download initiated.');
+    };
+
+    const downloadAll = () => {
+        log('Downloading all formats...');
+        downloadPdf();
+        downloadDocx();
+        downloadMarkdown();
     };
 
     const sampleJob = `AI +SDLC | Short-Term Contract Opportunity (Oct–Dec)
@@ -176,7 +206,9 @@ Learning Delivery Manager at Instinct Resourcing`;
                         <ReactMarkdown>{cvMarkdown}</ReactMarkdown>
                         <div className="download-buttons">
                             <button onClick={downloadPdf}>Download as PDF</button>
+                            <button onClick={downloadDocx} disabled={!cvDocx}>Download as DOCX</button>
                             <button onClick={downloadMarkdown}>Download as Markdown</button>
+                            <button onClick={downloadAll} className="download-all">Download All</button>
                         </div>
                     </div>
                 )}

@@ -8,45 +8,47 @@ The goal is to allow the user to download the generated CV in three different fo
 
 ## Core Dependencies
 
-To handle the file conversions, the following JavaScript libraries have been added to the project:
+To handle the file generation and download, the following JavaScript libraries are used:
 
-1.  **`jspdf`**: A powerful library for generating PDF documents from scratch in JavaScript.
-2.  **`html2canvas`**: A library that takes a "screenshot" of a given DOM element and renders it onto an HTML `<canvas>` element. We use this to capture the styled CV.
-3.  **`html-to-docx`**: A library that converts an HTML string into a `.docx` file blob that can be downloaded.
+1.  **`jspdf`**: A powerful library for generating PDF documents.
+2.  **`html2canvas`**: A library that takes a "screenshot" of a DOM element. We use this to capture the styled CV for the PDF.
+3.  **`file-saver`**: A utility for saving files on the client-side, used for the DOCX and Markdown downloads.
 
 ## Implementation Details
 
 ### 1. Data Flow Assumption
 
-The implementation relies on the n8n webhook returning a JSON object with two keys:
+The implementation relies on the n8n webhook returning a JSON object with the following keys:
 
 ```json
 {
-  "html": "<p>HTML content...</p>",
-  "markdown": "# Markdown content..."
+  "markdown": "# Markdown content...",
+  "docx_base64": "UEsDBBQABgAIAAAAIQD..."
 }
 ```
 
-The `App.js` component is updated to parse this JSON and store both the `html` and `markdown` content in its state.
+The `App.js` component parses this JSON and stores the `markdown` and `docx_base64` content in its state.
 
 ### 2. Download as PDF
 
-This is a two-step process:
+This is a two-step process that renders the Markdown as HTML and then captures it:
 
-1.  **Capture:** When the "Download PDF" button is clicked, `html2canvas` is used to render the `div` containing the generated CV's HTML into a canvas element.
-2.  **Generate:** The canvas is converted to a PNG image data URL. A new `jsPDF` instance is created, and the image is added to the PDF document. The `save()` method is then called to trigger the download.
+1.  **Capture:** `html2canvas` is used to render the `div` containing the `<ReactMarkdown>` component into a canvas element.
+2.  **Generate:** The canvas is converted to a PNG image. A new `jsPDF` instance is created, the image is added to the PDF, and the `save()` method is called to trigger the download.
 
-This method preserves the visual styling of the generated CV.
+### 3. Download as DOCX (Backend-driven)
 
-### 3. Download as DOCX
+To avoid browser compatibility issues, the DOCX conversion is handled by the backend (n8n workflow).
 
-1.  **Convert:** When the "Download DOCX" button is clicked, the `html-to-docx` library takes the `cvHtml` string from the application's state.
-2.  **Generate:** It converts the HTML into a `.docx` file blob in memory.
-3.  **Download:** A temporary link is created for this blob, and a click is programmatically triggered on it to start the download.
+1.  **Receive:** The frontend receives the `.docx` file as a `base64` encoded string from the backend.
+2.  **Decode:** When the "Download DOCX" button is clicked, the `atob` function decodes the base64 string into binary data.
+3.  **Create Blob & Download:** The binary data is converted into a `Blob`. The `saveAs` function from `file-saver` is then used to trigger the download of the `.docx` file.
 
 ### 4. Download as Markdown
 
-This is the most straightforward process:
+1.  **Create Blob:** A `Blob` object is created from the `cvMarkdown` string stored in the application's state.
+2.  **Download:** The `saveAs` function is used to download the `.md` file.
 
-1.  **Create Blob:** When the "Download Markdown" button is clicked, a new `Blob` object is created from the `cvMarkdown` string from the application's state. The MIME type is set to `text/markdown`.
-2.  **Download:** A temporary link is created for this blob, and a click is triggered to download the `.md` file.
+### 5. Download All
+
+A "Download All" button has been added for convenience. When clicked, it simply calls the `downloadPdf()`, `downloadDocx()`, and `downloadMarkdown()` functions in sequence, triggering the three downloads for the user.

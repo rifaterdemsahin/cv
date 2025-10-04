@@ -75,6 +75,14 @@ button:hover {
     background-color: #218838;
 }
 
+.download-buttons .download-all {
+    background-color: #17a2b8; /* A different color for the Download All button */
+}
+
+.download-buttons .download-all:hover {
+    background-color: #138496;
+}
+
 .app-footer {
     position: fixed;
     bottom: 0;
