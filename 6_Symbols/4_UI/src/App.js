@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
-    const [cvMarkdown, setCvMarkdown] = useState('');
+    const [cvHtml, setCvHtml] = useState('');
     const [cvDocx, setCvDocx] = useState(''); // Add state for docx
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -45,7 +45,7 @@ function App() {
         log('Starting CV generation...');
         setLoading(true);
         setError('');
-        setCvMarkdown('');
+        setCvHtml('');
         setCvDocx(''); // Clear docx state
 
         try {
@@ -92,9 +92,7 @@ function App() {
             const result = await response.json();
             log(`Parsed backend response: ${JSON.stringify(result).substring(0, 200)}...`);
             
-            // The n8n workflow should return html, markdown, and docx_base64
-            const markdownOutput = result.output || result.markdown || '';
-            setCvMarkdown(markdownOutput.replace(/```markdown\n|```/g, ''));
+            setCvHtml(result.html || '');
             setCvDocx(result.docx_base64 || '');
 
             log('CV generation complete.');
@@ -142,17 +140,14 @@ function App() {
     };
 
     const downloadMarkdown = () => {
-        log('Generating Markdown file...');
-        const blob = new Blob([cvMarkdown], { type: 'text/markdown;charset=utf-8' });
-        saveAs(blob, 'cv.md');
-        log('Markdown download initiated.');
+        // This function is disabled as we no longer receive markdown from the backend.
+        log('Markdown download is currently disabled.');
     };
 
     const downloadAll = () => {
-        log('Downloading all formats...');
+        log('Downloading PDF and DOCX...');
         downloadPdf();
         downloadDocx();
-        downloadMarkdown();
     };
 
     const sampleJob = `AI +SDLC | Short-Term Contract Opportunity (Oct–Dec)
@@ -200,15 +195,15 @@ Learning Delivery Manager at Instinct Resourcing`;
                 </button>
                 <button onClick={fillWithSampleJob}>Fill with Sample Job</button>
                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-                {cvMarkdown && (
+                {cvHtml && (
                     <div className="cv-container" ref={cvContainerRef}>
                         <h2>Generated CV</h2>
-                        <ReactMarkdown>{cvMarkdown}</ReactMarkdown>
+                        <div dangerouslySetInnerHTML={{ __html: cvHtml }} />
                         <div className="download-buttons">
                             <button onClick={downloadPdf}>Download as PDF</button>
                             <button onClick={downloadDocx} disabled={!cvDocx}>Download as DOCX</button>
-                            <button onClick={downloadMarkdown}>Download as Markdown</button>
-                            <button onClick={downloadAll} className="download-all">Download All</button>
+                            <button onClick={downloadMarkdown} disabled={true} title="Markdown not available from this endpoint">Download as Markdown</button>
+                            <button onClick={downloadAll} disabled={!cvDocx} className="download-all">Download All</button>
                         </div>
                     </div>
                 )}

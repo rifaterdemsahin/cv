@@ -17,4 +17,20 @@
 
 ---
 
-Resolution 
+Resolution
+
+The error `Cannot read properties of undefined (reading 'replace')` occurred because the application was trying to parse a `markdown` or `output` field from the n8n response, but the updated n8n workflow was sending an `html` field instead.
+
+### The Fix:
+
+The `App.js` component was refactored to align with the actual data being sent by the n8n workflow:
+
+1.  **Reverted to HTML Handling:** The application was changed back to primarily handle HTML content. It now reads the `result.html` from the JSON response to render the CV.
+2.  **State Management:** The `cvMarkdown` state was replaced with a `cvHtml` state to hold the incoming content.
+3.  **Rendering:** The UI now uses `dangerouslySetInnerHTML` to display the `cvHtml`, as was originally intended for HTML content.
+4.  **Buttons Updated:** 
+    *   The "Download as PDF" and "Download as DOCX" buttons are fully functional.
+    *   The "Download as Markdown" button has been disabled, as the application no longer receives the necessary markdown data from the backend.
+    *   The "Download All" button will now only download the available PDF and DOCX formats.
+
+This resolves the compilation error and aligns the frontend application with the current backend output. 
