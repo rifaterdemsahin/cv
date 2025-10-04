@@ -15,7 +15,8 @@ const menuData = {
     "💻 Code & Data": {
         "🚀 Dynamic CV Generator": "./6_Symbols/4_UI/public/index.html",
         "⚛️ React Application Source": "./6_Symbols/4_UI/",
-        "📊 CV Data": "./6_Symbols/2_Data/",
+        "📄 Source CV Data": "./6_Symbols/2_Data/",
+        "📊 Deployed CV Data": "./6_Symbols/4_UI/public/data/",
         "✍️ Markdown Tools": "./6_Symbols/3_BusinessLayer/"
     },
     "🛠️ Scripts & Formulas": {
