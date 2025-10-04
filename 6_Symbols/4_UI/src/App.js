@@ -89,6 +89,7 @@ function App() {
 
             log('Received response from backend.');
             const result = await response.json();
+            log(`Parsed backend response: ${JSON.stringify(result)}`);
             setCvHtml(result.html);
             setCvMarkdown(result.markdown);
             log('CV generation complete.');
