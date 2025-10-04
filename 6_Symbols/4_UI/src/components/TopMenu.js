@@ -3,9 +3,14 @@ import './TopMenu.css';
 
 const menuData = {
     "🚀 Core Files": {
-        "📄 README.md": "./markdown/README.md",
-        "🤖 gemini.md": "./markdown/gemini.md",
-        "🧭 cursor.md": "./markdown/cursor.md"
+        "1. Personal Info": "./markdown/1_personal_info.md",
+        "2. Skills": "./markdown/2_skills.md",
+        "3. Work Experience": "./markdown/3_work_experience.md",
+        "4. Education": "./markdown/4_education.md",
+        "5. Projects": "./markdown/5_projects.md",
+        "6. Certifications": "./markdown/6_certifications.md",
+        "7. Additional Info": "./markdown/7_additional_info.md",
+        "8. Niche": "./markdown/8_niche.md"
     },
     "📂 CV Versions": {
         "v19 - HPC Engineer": "./4_UI/dynamic_cv/v19/",
