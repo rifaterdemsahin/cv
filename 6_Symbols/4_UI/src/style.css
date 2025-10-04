@@ -58,3 +58,19 @@ button:hover {
     border-radius: 8px;
     background-color: #fafafa;
 }
+
+.download-buttons {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+.download-buttons button {
+    background-color: #28a745; /* A different color for download buttons */
+}
+
+.download-buttons button:hover {
+    background-color: #218838;
+}

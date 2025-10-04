@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import TopMenu from './components/TopMenu';
 import MarkdownViewer from './components/MarkdownViewer';
 import DebugWindow from './components/DebugWindow';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { saveAs } from 'file-saver';
+import htmlToDocx from 'html-to-docx';
 
 function App() {
     const [jobPrompt, setJobPrompt] = useState('');
-    const [generatedCv, setGeneratedCv] = useState('');
+    const [cvHtml, setCvHtml] = useState('');
+    const [cvMarkdown, setCvMarkdown] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [markdownFile, setMarkdownFile] = useState(null);
     const [debugLog, setDebugLog] = useState([]);
+    const cvContainerRef = useRef(null);
 
     const log = (message) => {
         setDebugLog(prevLog => [...prevLog, `[${new Date().toLocaleTimeString()}] ${message}`]);
@@ -39,7 +45,8 @@ function App() {
         log('Starting CV generation...');
         setLoading(true);
         setError('');
-        setGeneratedCv('');
+        setCvHtml('');
+        setCvMarkdown('');
 
         try {
             log('Fetching markdown data files...');
@@ -82,8 +89,9 @@ function App() {
             }
 
             log('Received response from backend.');
-            const cvHtml = await response.text();
-            setGeneratedCv(cvHtml);
+            const result = await response.json();
+            setCvHtml(result.html);
+            setCvMarkdown(result.markdown);
             log('CV generation complete.');
 
         } catch (err) {
@@ -92,6 +100,39 @@ function App() {
         } finally {
             setLoading(false);
         }
+    };
+
+    const downloadPdf = () => {
+        if (cvContainerRef.current) {
+            log('Generating PDF...');
+            html2canvas(cvContainerRef.current).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('cv.pdf');
+                log('PDF download initiated.');
+            });
+        }
+    };
+
+    const downloadDocx = async () => {
+        log('Generating DOCX...');
+        const fileBuffer = await htmlToDocx(cvHtml, null, {
+            table: { row: { cantSplit: true } },
+            footer: true,
+            pageNumber: true,
+        });
+        saveAs(fileBuffer, 'cv.docx');
+        log('DOCX download initiated.');
+    };
+
+    const downloadMarkdown = () => {
+        log('Generating Markdown file...');
+        const blob = new Blob([cvMarkdown], { type: 'text/markdown;charset=utf-8' });
+        saveAs(blob, 'cv.md');
+        log('Markdown download initiated.');
     };
 
     const sampleJob = `AI +SDLC | Short-Term Contract Opportunity (Oct–Dec)
@@ -139,10 +180,15 @@ Learning Delivery Manager at Instinct Resourcing`;
                 </button>
                 <button onClick={fillWithSampleJob}>Fill with Sample Job</button>
                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-                {generatedCv && (
-                    <div className="cv-container">
+                {cvHtml && (
+                    <div className="cv-container" ref={cvContainerRef}>
                         <h2>Generated CV</h2>
-                        <div dangerouslySetInnerHTML={{ __html: generatedCv }} />
+                        <div dangerouslySetInnerHTML={{ __html: cvHtml }} />
+                        <div className="download-buttons">
+                            <button onClick={downloadPdf}>Download as PDF</button>
+                            <button onClick={downloadDocx}>Download as DOCX</button>
+                            <button onClick={downloadMarkdown}>Download as Markdown</button>
+                        </div>
                     </div>
                 )}
             </div>
