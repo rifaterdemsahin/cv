@@ -1,5 +1,10 @@
 # 👨‍💻 Rifat Erdem Sahin - AI Engineer
 
+## 🚀 Project Description
+
+This project is a comprehensive, dynamic, and version-controlled CV built with React and deployed on GitHub Pages. It's designed to be easily maintainable, extensible, and showcase a modern approach to personal branding for a tech professional.
+
+The project is structured to manage different versions of the CV, track objectives and key results, and automate parts of the development process with bash scripts.
 
 ### 📊 Data Files
 - [📋 contactinfo.json](https://raw.githubusercontent.com/rifaterdemsahin/cv/main/6_Symbols/2_Data/contactinfo.json)
