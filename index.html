@@ -85,15 +85,18 @@
 
     <div class="container">
         <div class="nav">
+            <button onclick="showCategory('description')">📝 Project Description</button>
+            <button onclick="window.open('https://youtu.be/pUf8wGV2NBU', '_blank')">▶️ Watch Video</button>
             <button onclick="showCategory('core')">🚀 Core Files</button>
             <button onclick="showCategory('versions')">📂 CV Versions</button>
-            <button onclick="showCategory('code')">💻 Code & Data</button>
-            <button onclick="showCategory('scripts')">🛠️ Scripts & Formulas</button>
-            <button onclick="showCategory('node')">📦 Node & React</button>
-            <button onclick="showCategory('other')">🗂️ Other Directories</button>
         </div>
         <div class="content">
-            <div id="core" class="category">
+            <div id="description" class="category">
+                <h2>📝 Project Description</h2>
+                <p>This project is a dynamic CV generator that Rifat Erdem Sahin uses to create and manage his CVs for different job applications. It uses a React frontend to display the CV content from markdown files, allowing for easy updates and versioning.</p>
+                <p>If you are interested in creating your own dynamic CV, you can pull the repository and adapt it to your needs. The project is designed to be flexible and easy to customize.</p>
+            </div>
+            <div id="core" class="category hidden">
                 <h2>🚀 Core Files</h2>
                 <a href="./README.md">📄 README.md</a>
                 <a href="./gemini.md">🤖 gemini.md</a>
@@ -104,37 +107,6 @@
                 <a href="./4_UI/dynamic_cv/v19/">v19 - HPC Engineer</a>
                 <a href="./4_UI/dynamic_cv/v17/">v17 - AI Engineer</a>
                 <a href="./4_UI/dynamic_cv/v16/">v16 - DevOps Engineer</a>
-            </div>
-            <div id="code" class="category hidden">
-                <h2>💻 Code & Data</h2>
-                <a href="./6_Symbols/4_UI/public/index.html">🚀 Dynamic CV Generator</a>
-                <a href="./6_Symbols/4_UI/">⚛️ React Application Source</a>
-                <a href="./6_Symbols/2_Data/">📊 CV Data</a>
-                <a href="./6_Symbols/3_BusinessLayer/">✍️ Markdown Tools</a>
-            </div>
-            <div id="scripts" class="category hidden">
-                <h2>🛠️ Scripts & Formulas</h2>
-                <a href="./6_Symbols/1_Init/">📜 Initialization Scripts</a>
-                <a href="./5_Formula/">🧪 CV Generation Formulas</a>
-            </div>
-            <div id="node" class="category hidden">
-                <h2>📦 Node & React</h2>
-                <a href="./5_Formula/github_pages_deployment.md">🚀 GitHub Pages Deployment</a>
-                <a href="./5_Formula/github_pages_react_deployment_explained.md">🤔 How GitHub Pages Runs React</a>
-                <a href="./3_Environment/react_explanation.md">⚛️ React Explanation</a>
-                <a href="./3_Environment/npm_on_mac_install.md">📦 NPM on Mac</a>
-                <a href="./5_Formula/NPM_RUN.MD">▶️ NPM Run</a>
-                <a href="./7_Semblance/first_github_actions_node_fails.md">❌ Node Build Fail</a>
-                <a href="./7_Semblance/initial_start_error.md">❌ Initial Start Error</a>
-                <a href="./7_Semblance/load_error.md">❌ Load Error</a>
-                <a href="./7_Semblance/react_error_fix.md">❌ React Error Fix</a>
-            </div>
-            <div id="other" class="category hidden">
-                <h2>🗂️ Other Important Directories</h2>
-                <a href="./1_Real/">🎯 1_Real</a>
-                <a href="./2_Journey/">🗺️ 2_Journey</a>
-                <a href="./3_Environment/">🌳 3_Environment</a>
-                <a href="./7_Semblance/">🤔 7_Semblance</a>
             </div>
         </div>
     </div>
@@ -150,9 +122,9 @@
                 }
             });
         }
-        // Show the first category by default
+        // Show the description category by default
         document.addEventListener('DOMContentLoaded', () => {
-            showCategory('core');
+            showCategory('description');
         });
     </script>
 
