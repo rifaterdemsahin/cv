@@ -12,11 +12,7 @@ const menuData = {
         "7. Additional Info": "./markdown/7_additional_info.md",
         "8. Niche": "./markdown/8_niche.md"
     },
-    "📂 CV Versions": {
-        "v19 - HPC Engineer": "./4_UI/dynamic_cv/v19/",
-        "v17 - AI Engineer": "./4_UI/dynamic_cv/v17/",
-        "v16 - DevOps Engineer": "./4_UI/dynamic_cv/v16/"
-    }
+    "📂 CV Versions": "https://drive.google.com/drive/folders/1xxsFSDiaLWepS1OLBv6EmtvWxFa0Lc7l?usp=sharing"
 };
 
 const TopMenu = ({ onOpenFile }) => {
@@ -33,35 +29,45 @@ const TopMenu = ({ onOpenFile }) => {
     return (
         <nav className="top-menu" onMouseLeave={handleMenuLeave}>
             <div className="menu-items-left">
-                {Object.keys(menuData).map(title => (
-                    <div 
-                        key={title} 
-                        className="menu-item" 
-                        onMouseEnter={() => handleMenuEnter(title)}
-                    >
-                        <span>{title}</span>
-                        {activeMenu === title && (
-                            <div className="dropdown">
-                                {Object.keys(menuData[title]).map(linkText => {
-                                    const fileUrl = menuData[title][linkText];
-                                    if (fileUrl.endsWith('.md')) {
-                                        return (
-                                            <button key={linkText} onClick={() => onOpenFile(fileUrl)}>
-                                                {linkText}
-                                            </button>
-                                        );
-                                    } else {
-                                        return (
-                                            <a key={linkText} href={fileUrl} target="_blank" rel="noopener noreferrer">
-                                                {linkText}
-                                            </a>
-                                        );
-                                    }
-                                })}
-                            </div>
-                        )}
-                    </div>
-                ))}
+                {Object.keys(menuData).map(title => {
+                    const menuItem = menuData[title];
+                    if (typeof menuItem === 'string') {
+                        return (
+                            <a key={title} href={menuItem} target="_blank" rel="noopener noreferrer" className="menu-item">
+                                <span>{title}</span>
+                            </a>
+                        );
+                    }
+                    return (
+                        <div 
+                            key={title} 
+                            className="menu-item" 
+                            onMouseEnter={() => handleMenuEnter(title)}
+                        >
+                            <span>{title}</span>
+                            {activeMenu === title && (
+                                <div className="dropdown">
+                                    {Object.keys(menuData[title]).map(linkText => {
+                                        const fileUrl = menuData[title][linkText];
+                                        if (fileUrl.endsWith('.md')) {
+                                            return (
+                                                <button key={linkText} onClick={() => onOpenFile(fileUrl)}>
+                                                    {linkText}
+                                                </button>
+                                            );
+                                        } else {
+                                            return (
+                                                <a key={linkText} href={fileUrl} target="_blank" rel="noopener noreferrer">
+                                                    {linkText}
+                                                </a>
+                                            );
+                                        }
+                                    })}
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
             </div>
             <div className="menu-items-right">
                 <a href="https://youtu.be/pUf8wGV2NBU" target="_blank" rel="noopener noreferrer" className="repo-link">

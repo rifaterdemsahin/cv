@@ -86,9 +86,10 @@
     <div class="container">
         <div class="nav">
             <button onclick="showCategory('description')">📝 Project Description</button>
+            <button onclick="showCategory('react-app')">⚛️ React Application</button>
             <button onclick="window.open('https://youtu.be/pUf8wGV2NBU', '_blank')">▶️ Watch Video</button>
             <button onclick="showCategory('core')">🚀 Core Files</button>
-            <button onclick="showCategory('versions')">📂 CV Versions</button>
+            <button onclick="window.open('https://drive.google.com/drive/folders/1xxsFSDiaLWepS1OLBv6EmtvWxFa0Lc7l?usp=sharing', '_blank')">📂 CV Versions</button>
         </div>
         <div class="content">
             <div id="description" class="category">
@@ -96,17 +97,22 @@
                 <p>This project is a dynamic CV generator that Rifat Erdem Sahin uses to create and manage his CVs for different job applications. It uses a React frontend to display the CV content from markdown files, allowing for easy updates and versioning.</p>
                 <p>If you are interested in creating your own dynamic CV, you can pull the repository and adapt it to your needs. The project is designed to be flexible and easy to customize.</p>
             </div>
+            <div id="react-app" class="category hidden">
+                <h2>⚛️ React Application</h2>
+                <a href="http://localhost:3000" target="_blank">Local</a>
+                <a href="https://rifaterdemsahin.github.io/cv/" target="_blank">Cloud</a>
+                <h3>How to run locally:</h3>
+                <ol>
+                    <li>Navigate to the <code>6_Symbols/4_UI</code> directory.</li>
+                    <li>Run <code>npm install</code> to install dependencies.</li>
+                    <li>Run <code>npm start</code> to start the development server.</li>
+                </ol>
+            </div>
             <div id="core" class="category hidden">
                 <h2>🚀 Core Files</h2>
                 <a href="./README.md">📄 README.md</a>
                 <a href="./gemini.md">🤖 gemini.md</a>
                 <a href="./cursor.md">🧭 cursor.md</a>
-            </div>
-            <div id="versions" class="category hidden">
-                <h2>📂 CV Versions</h2>
-                <a href="./4_UI/dynamic_cv/v19/">v19 - HPC Engineer</a>
-                <a href="./4_UI/dynamic_cv/v17/">v17 - AI Engineer</a>
-                <a href="./4_UI/dynamic_cv/v16/">v16 - DevOps Engineer</a>
             </div>
         </div>
     </div>
